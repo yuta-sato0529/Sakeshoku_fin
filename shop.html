@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <!DOCTYPE html>
+    <html lang="jp">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <!-- 既存のスクリプトの読み込み -->
+         <meta name="discription" content="今、おいしい酒が飲める店が見つかる！現在地から簡単検索。手軽に飲んで良い酒Lifeを">
+         <script src="js/jquery-3.5.1.min.js"></script>
+         <script src="./js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="./css/reset.css">
+         <link rel="stylesheet" href="./css/sample.css">
+         <link rel="stylesheet" href="./css/bootstrap.min.css">
+         <!-- 住所から緯度経度を取得するAPI -->
+         <script src="https://cdn.geolonia.com/community-geocoder.js"></script>
+         <!-- アイコンの表示 -->
+         <title>SAKE食</title>
+    </head>
+<body>
+    <header>
+        <!-- タイトルイメージ -->
+        <h1 class="titleimage"><img src="./img/SAKElogo.jpg" alt="SAKE食ロゴ"></h1>
+        <!-- メニューバー表示 -->
+        <nav class="titlenav"> 
+            <ul class="nav justify-content-end">
+                <li class="nav-item"><a class="nav-link btn" data-bs-toggle="modal" data-bs-target="#Modalregi">新規店舗登録</a></li>
+                <li class="nav-item"><a class="nav-link btn" href="./index.html">タイトル画面へ</a></li>
+            </ul>
+        </nav>
+    </header>
+            <!--モーダル（新規登録画面） -->
+            <div class="modal fade" id="Modalregi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="text-center card">
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">店舗名</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">住所</span>
+                                <input type="text" id="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>                           
+                            <button id="exec">緯度経度を検索</button>
+                            <p>
+                                <label>
+                                    <span>緯度：</span>
+                                    <input type="text" id="lat">
+                                </label>
+                                <label>
+                                    <span>経度：</span>
+                                    <input type="text" id="lng">
+                                </label>
+                            </p>
+                            
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+    <main>
+        <div class="blank"></div>
+        <div id="acname"></div>
+
+
+        <script>
+            // ログインアカウントの取得
+            let accountname = localStorage.getItem("loginid")
+            const html = '<p>ID名:'+accountname+'</p>';
+            $("#acname").append(html);
+
+            // 緯度経度の取得
+            $("#exec").on("click", function(){                
+                    const loginid = $("#loginid").val();
+                    const pass = $("#pass").val();
+                    localStorage.setItem(loginid,pass);
+                    localStorage.setItem('loginid',loginid);
+            })
+        </script>
+
+    </main>
+</body>
+</html>

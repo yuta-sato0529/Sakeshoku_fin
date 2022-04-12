@@ -1,0 +1,26 @@
+
+/* headerの加工 */
+header{
+    display: flex;
+    position:fixed;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  .titleimage{
+    width:250px;
+  }
+
+  .titleimage img{
+    width: 70%;
+  }
+/* メニューバーの加工 */
+.titlenav{
+    margin-left: auto;
+
+  }
+
+/* タブとの重なり回避 */
+  .blank{
+    padding-bottom: 80px;
+  }

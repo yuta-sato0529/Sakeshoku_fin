@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- 既存のスクリプトの読み込み -->
+     <meta name="discription" content="今、おいしい酒が飲める店が見つかる！現在地から簡単検索。手軽に飲んで良い酒Lifeを">
+     <script src="js/jquery-3.5.1.min.js"></script>
+     <script src="./js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="./css/reset.css">
+     <link rel="stylesheet" href="./css/sample.css">
+     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    
+     <!-- アイコンの表示 -->
+     <title>SAKE食</title>
+</head>
+<body>
+    <header>
+        <!-- タイトルイメージ -->
+        <h1 class="titleimage"><img src="./img/SAKElogo.jpg" alt="SAKE食ロゴ"></h1>
+        <!-- メニューバー表示 -->
+        <nav class="titlenav"> 
+            <ul class="nav justify-content-end">
+                <li class="nav-item"><a class="nav-link btn" data-bs-toggle="modal" data-bs-target="#Modaluse">使い方</a></li>
+                <li class="nav-item"><a class="nav-link btn" data-bs-toggle="modal" data-bs-target="#Modallogin">ログイン</a></li>
+                <li class="nav-item"><a class="nav-link btn" data-bs-toggle="modal" data-bs-target="#shoplogin">飲食店の方へ</a></li>
+                <li class="nav-item"><a class="nav-link btn" data-bs-toggle="modal" data-bs-target="#Modalform">問い合わせ</a></li>
+            </ul>
+        </nav>
+        
+
+    </header>
+        <!--モーダル（使い方） -->
+        <div class="modal fade" id="Modaluse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">利用方法</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>使い方はこちらに記載</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!--モーダル（会員ログイン） -->
+        <div class="modal fade" id="Modallogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="text-center card">
+                    <div class="card-body">
+                        <h1 class="card-title"><img src="./img/icon.png" alt="ログイン"/></h1>
+                        <p class="card-text"><input type="email" placeholder="メールアドレス" required autofocus></p>
+                        <p class="card-text"><input type="password" placeholder="パスワード" required></p>
+                        <p class="card-text"><a href="#">パスワードをお忘れの場合</a></p>
+                        <p class="card-text"><a href="#">新規会員登録はこちら</a></p>
+                        <!--ログイン機能実装後 <p class="card-text"><button class="btn btn-primary" type="submit">ログイン</button></p> -->
+                        <p class="card-text"><a href="./mypage.html">ログイン</a></p>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        <!--モーダル（飲食店ログイン） -->
+        <div class="modal fade" id="shoplogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="text-center card">
+                    <div class="card-body">
+                        <h1 class="card-title"><img src="./img/icon.png" alt="ログイン"/></h1>
+                        <p class="card-text"><input type="text" id='loginid' placeholder="ID" required autofocus></p>
+                        <p class="card-text"><input type="text" id='pass' placeholder="パスワード" required></p>
+                        <p class="card-text"><a href="#">パスワードをお忘れの場合</a></p>
+                        <p class="card-text"><a href="#">新規会員登録はこちら</a></p>
+                        <!-- ログイン機能実装後  -->
+                        <!-- <p class="card-text"><button id="login" class="btn btn-primary">ログイン</button></p> -->
+                        <p class="card-text"><a id="login" href="./shop.html">ログイン</a></p>
+                        </div>
+                </form>
+            </div>
+            </div>
+        </div>    
+        <script>
+            // ログイン機能
+            $("#login").on("click", function(){                
+                    const loginid = $("#loginid").val();
+                    const pass = $("#pass").val();
+                    localStorage.setItem(loginid,pass);
+                    localStorage.setItem('loginid',loginid);
+            })
+        </script>
+        <!--モーダル（メール） -->
+        <div class="modal fade" id="Modalform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container my-5">
+                    <form method="post" action="mailto:yuta.sato.250394g@gmail.com">
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="メールアドレス">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="お名前">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" cols="50" placeholder="質問などはこちらへお願い致します。" name="text" type="text" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">送信</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    <!-- メイン場所の設置 -->
+    <main>
+    <!-- header部分への重なり回避 -->
+        <div class="blank"></div>
+
+    <!-- 現在地取得ボタン -->
+        <button id="geobtn" type="button" class="btn btn-info">近くの飲食店を探す</button>
+        <p class="pb-5"></p>
+    <!-- 位置検索ボタン -->
+        <p class="m-0">駅や地名から飲食店を探す</p>
+        <div class="pb-5" id='searchBoxContainer'><input type='text' id='searchBox' placeholder="駅や地名を入力"/></div>
+    <!-- 今日の気分ボタン -->
+
+    <!-- 地図情報表示 -->
+        <div id="view"></div>
+        <div id="myMap" style="position:relative;width:75%;height:600px;"></div>
+    <!-- /BingMapsAPI読み込み -->
+        <script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=' async defer></script>
+        <script src="./js/BmapQuery.js"></script>
+        <script>
+             //MAPInit地図表示
+            function GetMap() {
+                // let map = new Microsoft.Maps.Map('#myMap', {
+                //     center: new Microsoft.Maps.Location(35.681236, 139.767125),
+                //     zoom: 16
+                // });
+                
+                const map = new Bmap("#myMap");
+                map.startMap(35.681236, 139.767125, "load", 16);
+                // console.log(map);
+                // console.log(map.map);
+
+                // 情報をのせる際の記載https://mapapi.org/example.php?file=infoboxs_showChange&h=3//----------------------------------------------------
+                //3. Infobox
+                //   options = new Array();
+                //   options[index] = { lat, lon, width, height, title, pinColor, description };
+                //----------------------------------------------------
+                const options = [];
+                options[0]={
+                    "lat":35.670745,
+                    "lon":139.763661,
+                    "title":"GinzaWineBar G5",
+                    "pinColor":"#ff0000",
+                    "height":300,
+                    "width":320,
+                    "description": 'ジャンル：ワインバー<br>空き状況：あり<br>本日の営業時間：○時まで<br>客単価:3,000円<br>本日のおすすめワイン：<br><img src="#" width="300"><br><a href="tel:×××">電話はこちらから！</a>',
+                    "show":false
+                };        
+                options[1]={
+                    "lat":35.672894,
+                    "lon":139.76583,
+                    "title":"GOSS",
+                    "pinColor":"#ff0000",
+                    "height":300,
+                    "width":320,
+                    "description": 'ジャンル：ワインバー<br>空き状況：あり<br>本日の営業時間：○時まで<br>客単価:3,000円<br>本日のおすすめワイン：<br><img src="#" width="300"><br><a href="tel:×××">電話はこちらから！</a>',
+                    "show":false
+                };                        
+                //----------------------------------------------------
+                //4. Switch infoboxs
+                //   infoboxLayers(options, true); //true=one, false=Multiple
+                //----------------------------------------------------
+                map.infoboxLayers(options,true);                
+                // 場所検索機能
+                Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
+                    let options = {
+                        maxResults: 3,
+                        map: map.map
+                    };
+                    let manager = new Microsoft.Maps.AutosuggestManager(options);
+                    manager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
+                });
+                function selectedSuggestion(suggestionResult) {
+                    map.map.entities.clear();
+                    map.map.setView({ bounds: suggestionResult.bestView});
+                    let pushpin = new Microsoft.Maps.Pushpin(suggestionResult.location);
+                    map.map.entities.push(pushpin);
+                    // ドキュメント上では場所の位置表示用
+                    // document.getElementById('printoutPanel').innerHTML =
+                    //     'Suggestion: ' + suggestionResult.formattedSuggestion +
+                    //         '<br> Lat: ' + suggestionResult.location.latitude +
+                    //         '<br> Lon: ' + suggestionResult.location.longitude;
+                }
+
+            };
+
+                //1．位置情報の取得に成功した時の処理
+                function mapsInit(position) {
+                    //lat=緯度、lon=経度 を取得
+                    const map = new Bmap("#myMap");
+                    map.startMap(35.681236, 139.767125, "load", 16);
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    // $("#view").text("緯度" + lat + "経度" + lon);
+                    map.map.setView({ 
+                        center: new Microsoft.Maps.Location(lat, lon),
+                        zoom: 17
+                    });
+                    let nowposi = new Microsoft.Maps.Location(lat, lon)
+                    let pushpin = new Microsoft.Maps.Pushpin(nowposi);
+                    map.map.entities.push(pushpin);
+                };
+
+                //2． 位置情報の取得に失敗した場合の処理
+                function mapsError(error) {
+                let e = "";
+                if (error.code == 1) { //1＝位置情報取得が許可されてない（ブラウザの設定）
+                    e = "位置情報が許可されてません";                }
+                if (error.code == 2) { //2＝現在地を特定できない
+                    e = "現在位置を特定できません";                }
+                if (error.code == 3) { //3＝位置情報を取得する前にタイムアウトになった場合
+                    e = "位置情報を取得する前にタイムアウトになりました";
+                }
+                alert("エラー：" + e);
+                };
+
+                //3.位置情報取得オプション
+                var set ={
+                enableHighAccuracy: true, //より高精度な位置を求める
+                timeout: 10000            //10秒以内に現在地情報を取得できなければ、処理を終了
+                };
+            // 現在地取得
+             $("#geobtn").on("click",function(){
+                navigator.geolocation.getCurrentPosition(mapsInit, mapsError, set);
+            });
+
+            
+            
+
+        </script>
+
+
+    </main>
+    <footer>
+        <small>copyrights 2021 Sake食 All Righths Reserved</small>
+    </footer>
+        
+
+</body>
+</html>
